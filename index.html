@@ -44,10 +44,8 @@
         <div class="gallery" id="gallery"></div>
     </div>
     <script>
-        const repoUrl = 'https://raw.githubusercontent.com/piztian/mi-galeria-de-fotos/main/Accesorios-Mayo/';
-        const fotos = [
-            'foto1.jpg', 'foto2.jpg', 'foto3.jpg', 'foto4.jpg', 'foto5.jpg'
-        ];
+        const repoUrl = 'https://raw.githubusercontent.com/piztian/mi-galeria-de-fotos/main/accesoriosmayo/';
+        const fotos = Array.from({ length: 42 }, (_, i) => `photo (${i + 1}).jpg`);
         const gallery = document.getElementById('gallery');
         fotos.forEach(foto => {
             const img = document.createElement('img');
