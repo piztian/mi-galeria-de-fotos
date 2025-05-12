@@ -68,6 +68,21 @@
             padding: 5px 10px;
             font-weight: 700;
         }
+        .reset-button {
+            display: block;
+            margin: 20px auto;
+            background-color: #f04d4d;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 20px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .reset-button:hover {
+            background-color: #d43d3d;
+        }
     </style>
 </head>
 <body>
@@ -78,12 +93,14 @@
     </div>
     <div class="container">
         <h1>Mi Galería de Fotos</h1>
+        <button class="reset-button" onclick="resetLikes()">🔄 Resetear Me Gusta</button>
         <div class="gallery" id="gallery"></div>
     </div>
     <script>
         const repoUrl = 'https://raw.githubusercontent.com/piztian/mi-galeria-de-fotos/main/accesoriosmayo/';
         const fotos = Array.from({ length: 42 }, (_, i) => `photo (${i + 1}).jpeg`);
         const gallery = document.getElementById('gallery');
+        const PASSWORD = 'celucenter'; // Cambia esto por tu contraseña secreta
         
         fotos.forEach(foto => {
             const item = document.createElement('div');
@@ -111,6 +128,17 @@
             
             gallery.appendChild(item);
         });
+        
+        function resetLikes() {
+            const password = prompt('🔑 Ingresa la contraseña para resetear los Me Gusta:');
+            if (password === PASSWORD) {
+                fotos.forEach(foto => localStorage.removeItem(foto));
+                alert('✅ Los Me Gusta han sido reseteados correctamente.');
+                location.reload();
+            } else {
+                alert('❌ Contraseña incorrecta. No se pudieron resetear los Me Gusta.');
+            }
+        }
     </script>
 </body>
 </html>
